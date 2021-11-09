@@ -1,0 +1,11 @@
+dirlist        = {"examples", "initialize", "hierarchical_classes", ...
+          "adaptivity_iga", "adaptivity_iga/refine", "adaptivity_iga/coarsen", ...
+          "adaptivity_iga/refine/admissible"};
+
+dir = fileparts (mfilename ("fullpath"));
+
+  for my_ppp=1:length(dirlist)
+    addpath ( [ canonicalize_file_name([dir]) "/" dirlist{my_ppp}], "-end")
+  endfor
+
+clear dirlist dir my_ppp

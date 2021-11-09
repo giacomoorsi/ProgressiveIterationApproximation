@@ -1,0 +1,75 @@
+Tesi: Progressive Iteration Approximation: una classe di metodi per
+interpolazione e approssimazione spline
+
+--------------------------------------------------
+NOTE SULLE FIGURE UTILIZZATE NEL DOCUMENTO DI TESI
+--------------------------------------------------
+
+ISTRUZIONI PER REPLICARE LE FIGURE:
+È possibile utilizzare i file *_body.m impostando i parametri come indicato nel documento di tesi. Altrimenti, per alcune figure, è possibile utilizzare i file presenti in questa cartella. 
+Questi file non fanno uso dei file *_body.m poiché è stato necessario adattare la stampa delle figure e dei risultati per integrarle nella tesi. 
+
+ESPORTAZIONE DELLE FIGURE: 
+Sono stati utilizzati i breakpoints per interrompere l'esecuzione del codice nelle iterazioni delle quali era necessario salvare una figura. 
+
+Le quasi tutte le figure sono state esportate da MATLAB in formato .eps con le seguenti righe di codice: 
+	width = 4;     % Width in inches
+	height = 4;    % Height in inches
+	set(gcf,'InvertHardcopy','on');
+	set(gcf,'PaperUnits', 'inches');
+	papersize = get(gcf, 'PaperSize');
+	left = (papersize(1)- width)/2;
+	bottom = (papersize(2)- height)/2;
+	myfiguresize = [left, bottom, width, height];
+	set(gcf,'PaperPosition', myfiguresize);
+	print(’nomeFileExport’,’-depsc2','-r300');
+
+Per importare i file eps su LaTeX è necessario utilizzare il package "epstopdf" o, in alternativa, come è stato fatto per questa tesi, convertire manualmente i file eps in pdf con lo script perl "epstopdf.pl". 
+
+
+FIGURE:
+
+Figura 2.1, Tabella 2.1: Interpolazione Lemniscata di Gerono
+	- utilizzare figure_2_1
+	
+
+Figura 2.2, Tabella 2.2: Interpolazione Elica 3D
+	- utilizzare figure_2_2
+
+
+Figura 2.3: Aumento punti di interpolazione
+	- utilizzare pia_bspline_body con clef_lspia.svg,  punti di interpolazione n=6,15,30 ; knot_partition = 3, g=3.
+
+
+Figura 2.4: Confronto PIA e sistema lineare
+	- utilizzare figure_2_4_a e figure_2_4_b per calcolare il tempo richiesto e figure_2_4_load per generare la matrice bs. figure_2_4_b contiene anche il codice per mostrare il grafico. 
+
+
+Figura 2.5: WPIA. Come Figura 2.1, tracciando l'errore ad ogni iterazione e mostrandolo su un grafico in scala logaritmica. 
+
+
+Figura 2.6: Adaptive PIA: realizzato manualmente eseguendo le iterazioni solo su un punto di controllo. Lemniscata costruita come in figura 2.1
+
+
+Tabella 2.4: Confronto tra PIA e PIA Adattivo
+	- come figura 2.1. Eseguito con PIA adattivo tenendo traccia ad ogni iterazione nel numero di punti attivi, con eps_0 = 1e-5
+
+
+Figura 3.1: LSPIA su chiave di violino
+	- utilizzare lspia_bspline_body con "clef_lspia.svg", knot_partition=3, n=14, n_q=70, g=3, tol2=1e-5, tol1=1e-5
+
+
+Figura 3.2, Tabella 3.2: LSPIA su epitrocoide
+	- utilizzare lspia_bspline_body con funzione "epitrochoid", knot_partition=3, n=24, n_q=100. Grado g 3 o 5, tol1=1e-7, tol2=1e-15, o utilizzare figure_3_2.m
+
+
+Figura 3.3: Confronto peso con LSPIA chiave di violino. Usato "clef_lspia.svg", knot_partition=3, q_n=500, n=50. Eseguito il codice una volta con il calcolo del peso con autosaloni e una volta con mu=2/C. Ho salvato i risultati su due vettori e li ho messi su un grafico. 
+
+
+Figura 3.4, Tabella 3.3: LSPIA progressive su chiave di violino
+	Utilizzare figure_3_4.m o fare riferimento ai parametri impostati su quel file per replicare
+
+
+Figura 3.5, Tabella 3.4: LSPIA progressive su rapace
+	Utilizzare figure_3_5.m o fare riferimento ai parametri impostati su quel file per replicare
+ 

@@ -1,0 +1,22 @@
+dirlist        = {"examples", "examples/geometry_files", "examples/geometry_files/multipatch", ...
+         "examples/base", "examples/base/data_files", ...
+         "examples/elasticity", "examples/elasticity/data_files", ...
+         "examples/fluid", "examples/fluid/data_files", ...
+         "examples/maxwell", "examples/maxwell/data_files", ...
+         "examples/kirchhoff_love_shell", ...
+         "geometry", "utils", "msh", "obsolete", "operators", "solve", "space", "multipatch"};
+
+[basename,dir] = fileparts(fileparts (mfilename ("fullpath")));
+
+for my_ppp=1:length(dirlist)
+  if (! exist (fullfile (basename, "inst"), "dir"))
+    ## Run this if the package is installed
+    rmpath ( [ basename "/" dirlist{my_ppp}])
+  else
+    ## Run this if we are testing the package without installation
+    rmpath ([ fileparts(canonicalize_file_name (mfilename ("fullpath"))) "/inst/" dirlist{my_ppp}])
+    rmpath ([ fileparts(canonicalize_file_name (mfilename ("fullpath"))) "/src/"])
+  end
+end
+
+clear dirlist basename dir my_ppp

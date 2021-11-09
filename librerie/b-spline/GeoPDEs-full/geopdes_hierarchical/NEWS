@@ -1,0 +1,8 @@
+Summary of important changes for geopdes_hierarchical-3.2.2:
+-----------------------------------------------------------------------------
+* matrix_basis_change__: remove use of "stable" tag
+* adaptivity_estimate_laplace: fixed bug in jump terms
+
+Summary of important changes for geopdes_hierarchical-3.2.0:
+-----------------------------------------------------------------------------
+* Localized the computation of the Csub matrix, for lower memory usage

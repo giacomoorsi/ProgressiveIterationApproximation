@@ -1,0 +1,31 @@
+dirlist        = {"examples", "examples/geometry_files", "examples/geometry_files/multipatch"...
+         "examples/base", "examples/base/data_files", ...
+         "examples/elasticity", "examples/elasticity/data_files", ...
+         "examples/fluid", "examples/fluid/data_files", ...
+         "examples/maxwell", "examples/maxwell/data_files", ...
+         "examples/kirchhoff_love_shell", ...
+         "geometry", "utils", "msh", "obsolete", "operators", "solve", "space", "multipatch"};
+
+dir = fileparts (mfilename ("fullpath"));
+
+if (! exist (fullfile (dir, "inst"), "dir"))
+  ## Run this if the package is installed
+  putenv  ("GEOPDES_INCLUDE_DIR", [ "-I" canonicalize_file_name([dir filesep() ".."]) filesep() "include"])
+  for my_ppp=1:length(dirlist)
+    addpath ( [ canonicalize_file_name([dir "/.."]) "/" dirlist{my_ppp}], "-end")
+  endfor
+else
+  ## Run this if we are testing the package without installation        
+  putenv  ("GEOPDES_INCLUDE_DIR", [ "-I" canonicalize_file_name(dir) "/inst/include"])
+  for my_ppp=1:length(dirlist)
+    addpath ([ canonicalize_file_name(dir) "/inst/" dirlist{my_ppp}])
+    addpath ([ canonicalize_file_name(dir) "/src/"])
+  endfor
+  ## if the package is not installed, dependencies are not
+  ## automatically taken care of, so we need to load some packages here
+  pkg load nurbs integration
+endif
+
+warning ("off", "Octave:fopen-file-in-path");
+warning ("off", "Octave:load-file-in-path");
+clear dirlist dir my_ppp
