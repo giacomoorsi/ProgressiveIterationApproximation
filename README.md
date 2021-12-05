@@ -13,7 +13,7 @@ The thesis (in Italian) is available on the file `tesi.pdf`
 The aim of this thesis is to introduce some iterative-geometric interpolation and approximation methods for spline curves and to analyse their differences. In particular, a class of methods called "Progressive Iteration Approximation" is analysed. These methods allow the control points of interpolating or approximating curves to be determined iteratively, with the advantage of handling very large data sets efficiently. In addition, a summary is presented of some numerical results obtained in MATLAB environment following the study, implementation and experimentation of the algorithms analysed.
 
 
-## Codice 
+## Code 
 This folder contains the code for the implementation for B-Spline curves in MATLAB of the algorithms
 - PIA (Progressive Iteration Approximation) (https://doi.org/10.1016/j.cad.2013.08.012)
 - WPIA (Weighted Progressive Iteration Approximation) (https://doi.org/10.1016/j.cagd.2009.11.001)
